@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+Logs/
+Backups
+*.log
+*.csv
+Credentials.py
