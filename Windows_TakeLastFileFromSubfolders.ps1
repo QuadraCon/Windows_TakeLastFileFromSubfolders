@@ -1,5 +1,5 @@
-$source = "C:\Source"
-$destination = "C:\Destination"
+$source = "C:\Scripts\Cisco-SecureCRT_SaveConfig\Backups"
+$destination = "C:\Scripts\Windows_TakeLastFileFromSubfolders\LatestConfigs"
 
 #Create destination folder if it doesn't exist
 if (-not (Test-Path $destination)) {
@@ -8,7 +8,7 @@ if (-not (Test-Path $destination)) {
 
 #Loop through each subfolder
 Get-ChildItem -Path $source -Directory | ForEach-Object {
-    $latest = Get-ChildItem -Path $_.FullName -Filter "*-Config.txt" |
+    $latest = Get-ChildItem -Path "$($_.FullName)\*" -File -Include "*-Config.txt", "*-InventoryAndVersion.txt" |
               Sort-Object LastWriteTime -Descending |
               Select-Object -First 1
 
